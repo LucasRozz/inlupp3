@@ -6,6 +6,9 @@ public abstract class Unary extends SymbolicExpression{
     public Unary(SymbolicExpression argument){
         this.argument = argument;
     }
+    protected String getArgument(){
+        return this.argument.toString();
+    }
 
     @Override
     public String toString() {

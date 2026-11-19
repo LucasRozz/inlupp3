@@ -6,9 +6,11 @@ public class Exp extends Unary{
     }
 
     @Override 
+    public String getName(){
+        return "exp";
+    }
     public int getPriority(){
         return 100;
     }
-
     
 }

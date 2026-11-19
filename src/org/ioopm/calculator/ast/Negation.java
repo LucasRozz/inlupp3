@@ -9,4 +9,7 @@ public class Negation extends Unary{
     public String getName(){
         return "-";
     }
+    public String toString(){
+        return "-" + this.getArgument();
+    }
 }
