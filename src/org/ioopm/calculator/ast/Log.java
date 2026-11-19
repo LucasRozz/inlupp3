@@ -9,4 +9,6 @@ public class Log extends Unary{
     public String getName(){
         return "log";
     }
+
+
 }
