@@ -1,4 +1,5 @@
 package org.ioopm.calculator.ast;
+import java.util.HashMap;
 
 public abstract class SymbolicExpression {
     private int priority = 50;
@@ -17,7 +18,9 @@ public abstract class SymbolicExpression {
         throw new RuntimeException("getValue() called on expression with no operator");
     }
 
-    public void eval(){
-        
+    public abstract SymbolicExpression eval(Environment vars);
+
+    public boolean isCommand() {
+        return false;
     }
 }

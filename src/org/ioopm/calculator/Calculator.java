@@ -9,7 +9,6 @@ public class Calculator {
         new Sin(null);
         new Constant(0);
         new Division(null, null);
-        new Vars();
         new Cos(null);
         new Negation(null);
 

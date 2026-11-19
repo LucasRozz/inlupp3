@@ -1,7 +1,7 @@
 package org.ioopm.calculator.ast;
 
 public abstract class Unary extends SymbolicExpression{
-    private SymbolicExpression argument;
+    protected SymbolicExpression argument;
 
     public Unary(SymbolicExpression argument){
         this.argument = argument;
@@ -9,12 +9,18 @@ public abstract class Unary extends SymbolicExpression{
     protected String getArgument(){
         return this.argument.toString();
     }
+    public int getPriority(){
+        return 102;
+    }
 
     @Override
     public String toString() {
-        /// Note how the call to toString() is not necessary
-        return this.getName() + " " + this.argument.toString();
+        if(this.getName() == "-" && (this.argument.isConstant() || this.argument instanceof Unary)) {
+            return this.getName() + this.argument.toString();
+        }
+        return this.getName() + "(" + this.argument.toString() + ")";
     }
+    
 
     public boolean equals(Object other) {
         if (other instanceof Unary) {

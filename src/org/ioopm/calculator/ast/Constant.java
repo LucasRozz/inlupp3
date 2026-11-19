@@ -1,4 +1,5 @@
 package org.ioopm.calculator.ast;
+import java.util.HashMap;
 
 public class Constant extends Atom{
     private double value;
@@ -17,6 +18,10 @@ public class Constant extends Atom{
     public String toString() {
         return String.valueOf(this.value);
     }
+
+    public int getPriority(){
+        return 150;
+    }
     
     public boolean equals(Object other) {
         if (other instanceof Constant) {
@@ -29,5 +34,9 @@ public class Constant extends Atom{
     public boolean equals(Constant other) {
         /// access a private field of other!
         return this.value == other.value;
+    }
+
+    public SymbolicExpression eval(Environment vars) {
+        return new Constant(this.value);
     }
 }

@@ -1,4 +1,5 @@
 package org.ioopm.calculator.ast;
+import java.util.HashMap;
 
 public class Negation extends Unary{
     public Negation(SymbolicExpression e) {
@@ -9,7 +10,14 @@ public class Negation extends Unary{
     public String getName(){
         return "-";
     }
-    public String toString(){
-        return "-" + this.getArgument();
+    
+
+    public SymbolicExpression eval(Environment vars){
+        SymbolicExpression arg = this.argument.eval(vars);
+        if (arg.isConstant()) {
+            return new Constant(-arg.getValue());
+        } else {
+            return new Negation(arg);
+        }
     }
 }
